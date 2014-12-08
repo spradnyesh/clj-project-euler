@@ -6,19 +6,18 @@
                 :when (= 0 (rem n i))]
             i)))
 
-;; ???this takes drastically more time than the "for" version above???
 (defn is-prime-loop? [n]
-  (loop [i 2]
-    (cond (> i (math/sqrt (inc n))) true
-          (zero? (rem n i)) false
-          :else (recur (inc i)))))
+  (let [s (math/sqrt (inc n))]
+    (loop [i 2]
+      (cond (> i s) true
+            (= 0 (rem n i)) false
+            :else (recur (inc i))))))
 
 (defn primes-below-0 [n]
   (for [i (range 2 n)
         :when (is-prime-for? i)]
     i))
 
-;; almost same time as -0
 (defn primes-below-1 [n]
   (vec (map second (filter (fn [[a b]] (true? a)) (map-indexed (fn [a b] [(is-prime-for? a) b]) (range n))))))
 
