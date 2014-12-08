@@ -4,4 +4,5 @@
 
 (expect 28 (triangle-number 7))
 (expect '(1 2 4 5 10 100 50 25 20) (divisors 100))
-(expect 25200 (main 50))
+(expect 25200 (main1 50))
+(expect 25200 (main2 50))
