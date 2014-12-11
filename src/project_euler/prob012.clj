@@ -1,5 +1,6 @@
 (ns project-euler.prob012
-  (:require [clojure.math.numeric-tower :as math]))
+  (:require [project-euler.utils :as u]
+            [clojure.math.numeric-tower :as math]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 1st approach:
@@ -45,29 +46,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; copy-pasted from prob007
-(defn is-prime? [n]
-  (empty? (for [i (range 2 (math/sqrt (inc n)))
-                :when (= 0 (rem n i))]
-            i)))
-
-(defn next-prime [n]
-  (if (< n 2)
-    [2]
-    (first (filter is-prime? (iterate inc (inc n))))))
-;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defn prime-factors [n acc]
-  (let [sqrt (math/sqrt n)]
-    (loop [i 2, acc acc]
-      (cond (= 1 n) acc
-
-            (= 0 (rem n i))
-            (prime-factors (/ n i) (conj acc i))
-
-            :else (recur (next-prime i) acc)))))
-
-(defn num-divisors [n]
-  (reduce * (map (comp inc count) (vals (group-by identity (prime-factors n []))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -81,4 +59,4 @@
   (main n (comp count divisors-2)))
 
 (defn main2 [n]
-  (main n num-divisors))
+  (main n u/num-divisors))

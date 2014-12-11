@@ -13,10 +13,7 @@
 (expect 6 (lp 2))
 
 ;; approach-3
-(expect '(1 5 10 10 5 1) (pascal-triangle 5))
 (expect 20 (main-3 3))
 
 ;; approach-4
-(expect 120 (factorial 5))
-(expect 252 (combination 10 5))
 (expect 20 (main-4 3))

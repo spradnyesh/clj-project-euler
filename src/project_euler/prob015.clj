@@ -1,4 +1,5 @@
-(ns project-euler.prob015)
+(ns project-euler.prob015
+  (:require [project-euler.utils :as u]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; approach-1 : StackOverflowError :(
@@ -49,28 +50,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; approach-3 : http://www.mathblog.dk/project-euler-15/, http://copingwithcomputers.com/2013/07/06/lattice-paths/
 
-(defn pascal-triangle [n]
-  (doall (cond (zero? n) [1]
-               (= n 1) [1 1]
-               :else (concat [1]
-                             (map (fn [[a b]] (+ a b)) (partition 2 1 (pascal-triangle (dec n))))
-                             [1]))))
-
 (defn main-3 [n]
-  (let [pt (pascal-triangle (* 2 n))]
+  (let [pt (u/pascal-triangle (* 2 n))]
     (nth pt (/ (count pt) 2))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; approach-4 : http://www.mathblog.dk/project-euler-15/, http://copingwithcomputers.com/2013/07/06/lattice-paths/
 
-(defn factorial [n]
-  (if (zero? n)
-    1
-    (*' n (factorial (dec n)))))
-
-(defn combination [n k]
-  (/ (factorial n)
-     (*' (factorial k) (factorial (- n k)))))
-
 (defn main-4 [n]
-  (combination (* 2 n) n))
+  (u/combination (* 2 n) n))
