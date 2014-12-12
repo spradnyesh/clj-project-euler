@@ -1,6 +1,5 @@
 (ns project-euler.prob017
-  (:require [project-euler.utils :as u]
-            [clojure.math.numeric-tower :as math]))
+  (:require [clojure.math.numeric-tower :as math]))
 
 (def num-to-name-map
   {1 "one" 2 "two" 3 "three" 4 "four" 5 "five" 6 "six" 7 "seven" 8 "eight" 9 "nine" 10 "ten"
