@@ -1,6 +1,5 @@
 (ns project-euler.prob021
-  (:require [project-euler.utils :as u]
-            [clojure.math.numeric-tower :as math]))
+  (:require [project-euler.utils :as u]))
 
 (defn d [n]
   (reduce + (remove #(= n %) (u/divisors n))))
