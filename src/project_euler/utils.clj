@@ -79,3 +79,6 @@
   ([x y] (/ (* x y) (gcd x y)))
   ([x y & zs]
      (reduce lcm (lcm x y) zs)))
+
+(defn digits [num]
+  (rest (clojure.string/split (str num) #"")))
