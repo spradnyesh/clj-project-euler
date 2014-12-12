@@ -95,3 +95,9 @@
 
 (defn digits [num]
   (rest (clojure.string/split (str num) #"")))
+
+(defn parse-int [s]
+  (Integer/parseInt (re-find #"\A-?\d+" s)))
+
+(defn int-div [a b]
+  (int (math/floor (/ a b))))

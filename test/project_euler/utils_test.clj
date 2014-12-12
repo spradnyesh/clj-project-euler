@@ -19,3 +19,5 @@
 (expect 10 (gcd 10 20))
 (expect 20 (lcm 10 20))
 (expect (= (* 10 20) (* (gcd 10 20) (lcm 10 20))))
+(expect 11 (parse-int "11"))
+(expect 19 (int-div 1901 100))
