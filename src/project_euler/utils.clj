@@ -62,6 +62,19 @@
 (defn num-divisors [n]
   (reduce * (map (comp inc count) (vals (group-by identity (prime-factors n []))))))
 
+;; from prob-12
+(defn divisors [n]
+  (if (= n 1) [1]
+    (let [sqrt (math/sqrt n)]
+      (loop [i 2, acc [1 n]]
+        (if (> i sqrt)
+          acc
+          (if (= 0 (rem n i))
+            (if (= i (/ n i))
+              (recur (inc i) (conj acc i)) ; needed to remove x if n is perfect square
+              (recur (inc i) (conj acc i (/ n i))))
+            (recur (inc i) acc)))))))
+
 (defn is-palindrome? [n]
   (let [str (str n)]
     (=  str (s/reverse str))))

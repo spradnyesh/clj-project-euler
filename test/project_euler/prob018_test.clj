@@ -2,7 +2,6 @@
   (:use expectations
         project-euler.prob018))
 
-
 (expect '([[0 0] [1 0] [2 0] [3 0]]
             [[0 0] [1 0] [2 0] [3 1]]
             [[0 0] [1 0] [2 1] [3 1]]
