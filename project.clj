@@ -7,5 +7,7 @@
                  [org.clojure/core.memoize "0.5.6"]
                  [expectations "2.0.13"]
                  [org.clojure/math.numeric-tower "0.0.4"]
-                 [criterium "0.4.3"]]
+                 [org.clojure/math.combinatorics "0.0.8"]
+                 [criterium "0.4.3"]
+                 [org.clojure/tools.trace "0.7.8"]]
   :plugins [[lein-autoexpect "1.0"]])
