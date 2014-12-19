@@ -1,6 +1,8 @@
 (ns project-euler.prob028
   (:require [clojure.math.numeric-tower :as math]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; my approach: draw the spiral and then sum diagonals
 (defn rung-locs [size k [start-x start-y]]
   (let [acc (atom [])
         l (* k 2)]
@@ -51,5 +53,18 @@
   (reduce + (map #(get-cell matrix %)
                  (diagonal-locs (count matrix)))))
 
-(defn main [n]
+(defn main-1 [n]
   (diagonal-sum (spiral n)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; correct approach: use formula
+;; https://projecteuler.net/quote_post=12-1aa67
+
+(defn formula [n]
+  (+ (* 4 n n) (- (* n 6)) 6))
+
+(defn main-2 [n]
+  (loop [i 3, sum 1]
+    (if (> i n)
+      sum
+      (recur (+ i 2) (+ sum (formula i))))))

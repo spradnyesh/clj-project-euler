@@ -14,4 +14,6 @@
         (diagonal-locs 5))
 (expect 2 (get-cell [[0 0 0 0 0] [0 7 8 9 0] [0 6 1 2 0] [0 5 4 3 0] [0 0 0 0 0]] [2 3]))
 (expect 101 (diagonal-sum (spiral 5)))
-(expect 101 (main 5))
+(expect 101 (main-1 5))
+
+(expect 101 (main-2 5))
