@@ -2,6 +2,8 @@
   (:use expectations
         project-euler.prob023))
 
+(expect 117 (sum-of-divisors-1 100))
+(expect 117 (sum-of-divisors-2 100))
 (expect false (abundant? 11))
 (expect true (abundant? 12))
 (expect false (abundant? 13))

@@ -78,6 +78,17 @@
 (defn proper-divisors [n]
   (remove #(= n %) (divisors n)))
 
+;; http://planetmath.org/formulaforsumofdivisors
+(defn sum-of-divisors [n]
+  (let [groups (group-by identity (prime-factors n []))]
+    (reduce * (map (fn [[k v]]
+                     (/ (dec (math/expt k (inc (count v))))
+                        (dec k)))
+                   groups))))
+
+(defn sum-of-divisors-proper [n]
+  (- (sum-of-divisors n) n))
+
 (defn is-palindrome? [n]
   (let [str (str n)]
     (=  str (s/reverse str))))

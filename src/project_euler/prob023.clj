@@ -4,8 +4,15 @@
             [clojure.math.numeric-tower :as math]
             [clojure.math.combinatorics :as combo]))
 
+(defn sum-of-divisors-1 [n]
+  (reduce + (u/proper-divisors n)))
+
+;; -1 is faster
+(defn sum-of-divisors-2 [n]
+  (u/sum-of-divisors-proper n))
+
 (defn abundant? [n]
-  (> (reduce + (u/proper-divisors n)) n))
+  (> (sum-of-divisors-1 n) n))
 (def m-abundant? (memo/ttl abundant? :ttl/threshold 1000000))
 
 ;; do a and b exist, such that both are abundant? and also, n = a + b
