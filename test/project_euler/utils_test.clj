@@ -14,6 +14,7 @@
 (expect 541 (nth-prime 100))
 (expect 9 (num-divisors 100))
 (expect [1 100 2 50 4 25 5 20 10] (divisors 100))
+(expect [1 2 50 4 25 5 20 10] (proper-divisors 100))
 (expect false (is-palindrome? 123))
 (expect true (is-palindrome? 121))
 (expect 10 (gcd 10 20))

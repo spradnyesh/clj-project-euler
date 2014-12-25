@@ -65,7 +65,7 @@
 ;; from prob-12
 (defn divisors [n]
   (if (= n 1) [1]
-    (let [sqrt (math/sqrt n)]
+    (let [sqrt (math/sqrt n)] ; caching (outside loop to avoid recalculation)
       (loop [i 2, acc [1 n]]
         (if (> i sqrt)
           acc
@@ -74,6 +74,9 @@
               (recur (inc i) (conj acc i)) ; needed to remove x if n is perfect square
               (recur (inc i) (conj acc i (/ n i))))
             (recur (inc i) acc)))))))
+
+(defn proper-divisors [n]
+  (remove #(= n %) (divisors n)))
 
 (defn is-palindrome? [n]
   (let [str (str n)]
