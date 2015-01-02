@@ -2,6 +2,8 @@
   (:use expectations
         project-euler.prob035))
 
+(expect [9] (rotations 9))
+(expect [97 79] (rotations 97))
 (expect [197 971 719] (rotations 197))
 (expect false (circular-prime? 196))
 (expect true (circular-prime? 197))

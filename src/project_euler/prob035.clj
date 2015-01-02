@@ -1,18 +1,19 @@
 (ns project-euler.prob035
   (:require [project-euler.utils :as u]
-            [clojure.string :as str]))
+            [clojure.math.numeric-tower :as math]))
 
 (defn rotations [n]
-  (if (< n 10)
-    [n] ; for very minor performance gain
-    (let [str (map str (u/digits n))]
-      (loop [k (dec (count str))
-             acc [str]]
-        (if (zero? k)
-          (map (comp u/parse-int str/join) acc)
-          (recur (dec k)
-                 (let [l (last acc)]
-                   (conj acc (concat (rest l) [(first l)])))))))))
+  (cond (< n 10) [n]
+        (< n 100) [n (let [[a b] (reverse (u/digits n))] (+ b (* 10 a)))]
+        :else (let [divisor (math/expt 10 (dec (count (str n))))]
+                (loop [k (dec (count (str n)))
+                       acc [n]]
+                  (if (zero? k)
+                    acc
+                    (recur (dec k)
+                           (let [l (last acc)]
+                             (conj acc (+ (* (rem l divisor) 10)
+                                          (u/int-div l divisor))))))))))
 
 (defn circular-prime? [n]
   (let [rotations (rotations n)]
