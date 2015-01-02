@@ -5,8 +5,9 @@
 (defn rotations [n]
   (cond (< n 10) [n]
         (< n 100) [n (let [[a b] (reverse (u/digits n))] (+ b (* 10 a)))]
-        :else (let [divisor (math/expt 10 (dec (count (str n))))]
-                (loop [k (dec (count (str n)))
+        :else (let [size (dec (count (str n)))
+                    divisor (math/expt 10 size)]
+                (loop [k size
                        acc [n]]
                   (if (zero? k)
                     acc
