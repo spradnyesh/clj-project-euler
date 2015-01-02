@@ -7,6 +7,7 @@
 (expect 120 (factorial 5))
 (expect 252 (combination 10 5))
 (expect '(1 5 10 10 5 1) (pascal-triangle 5))
+(expect false (is-prime? 1))
 (expect false (is-prime? 4))
 (expect true (is-prime? 19))
 (expect 19 (next-prime 17))
