@@ -117,3 +117,11 @@
 
 (defn digits [num]
   (map parse-int (rest (clojure.string/split (str num) #""))))
+(comment
+  ;; about 3 times slower than digits (using strings) above :(
+  ;; maybe because of math/floor
+  (defn digits [num]
+    (loop [n num, acc []]
+      (if (< n 10)
+        (reverse (conj acc n))
+        (recur (int-div n 10) (conj acc (rem n 10)))))))
