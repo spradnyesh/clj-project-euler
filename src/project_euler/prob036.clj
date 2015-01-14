@@ -10,7 +10,7 @@
   (Integer/toBinaryString n))
 
 (defn palindromic-10-2? [n]
-  (if (palindrome? n)
+  (when (palindrome? n)
     (let [binary-str (to-binary-string n)]
       (= binary-str (str/reverse binary-str)))))
 
