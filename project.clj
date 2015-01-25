@@ -9,5 +9,6 @@
                  [org.clojure/math.numeric-tower "0.0.4"]
                  [org.clojure/math.combinatorics "0.0.8"]
                  [criterium "0.4.3"]
-                 [org.clojure/tools.trace "0.7.8"]]
+                 [org.clojure/tools.trace "0.7.8"]
+                 [com.taoensso/timbre "3.2.1"]]
   :plugins [[lein-autoexpect "1.0"]])

@@ -3,7 +3,6 @@
             [clojure.string :as s]
             [clojure.core.memoize :as memo]))
 
-
 (defn splice [list from length]
   (for [i (range from (+ from length))]
     (nth list i)))
@@ -125,3 +124,8 @@
       (if (< n 10)
         (reverse (conj acc n))
         (recur (int-div n 10) (conj acc (rem n 10)))))))
+
+(defn digits->num [digits]
+  (reduce + (map-indexed (fn [index value]
+                           (* (math/expt 10 index) value))
+                         (reverse digits))))

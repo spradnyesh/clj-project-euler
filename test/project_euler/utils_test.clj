@@ -26,3 +26,4 @@
 (expect 11 (parse-int "11"))
 (expect [1 2 1] (digits 121))
 (expect 19 (int-div 1901 100))
+(expect 12345 (digits->num [1 2 3 4 5]))
