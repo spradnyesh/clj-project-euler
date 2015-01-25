@@ -7,19 +7,19 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; brute-force
+
+;; optimization reduces performance by 50% :(
+;; so *not* doing it
 (defn unusual? [a b]
   (let [da (u/digits a)
         db (u/digits b)
         dp (u/digits (* a b))]
-    ;; optimization reduces performance by 50% :(
-    ;; so *not* doing it
-    (comment (if (and (every? #(= % -1) ; should NOT contain 0
+    (if (and (every? #(= % -1) ; should NOT contain 0
                               (map #(.indexOf % 0) [da db dp]))
                       (every? true? ; should contain distinct digits
                               (map #(= % (distinct %)) [da db dp])))
                (pandigital? (concat da db dp))
-               false))
-    (pandigital? (concat da db dp))))
+               false)))
 
 (defn products [limit]
   (let [acc (atom [[]])]
@@ -27,7 +27,7 @@
                         j (range 1 limit)
                         :let [prod (* i j)]
                         :when (and (= -1 (.indexOf (map first @acc) prod))
-                                   (unusual? i j))]
+                                   (pandigital? (concat (u/digits i) (u/digits j) (u/digits (* i j)))))]
                     (swap! acc conj [prod i j]))))))
 
 (defn main-1 [limit]
