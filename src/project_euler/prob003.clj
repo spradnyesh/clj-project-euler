@@ -34,6 +34,5 @@
 
 (defn max-prime-2 [n]
   (apply max (for [i (range 2 (math/sqrt n))
-                   :when (and (is-prime? i)
-                              (= 0 (rem n i)))]
+                   :when (and (= 0 (rem n i))(is-prime? i))]
                i)))
