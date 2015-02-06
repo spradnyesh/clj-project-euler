@@ -6,12 +6,9 @@
   (let [digits (u/digits n)]
     (= digits (reverse digits))))
 
-(defn to-binary-string [n]
-  (Integer/toBinaryString n))
-
 (defn palindromic-10-2? [n]
   (when (palindrome? n)
-    (let [binary-str (to-binary-string n)]
+    (let [binary-str (Integer/toBinaryString n)]
       (= binary-str (str/reverse binary-str)))))
 
 (defn numbers [limit]
