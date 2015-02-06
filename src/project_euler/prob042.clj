@@ -1,7 +1,6 @@
 (ns project-euler.prob042
   (:require [project-euler.utils :as u]
-            [clojure.string :as str]
-            [clojure.core.memoize :as memo]))
+            [clojure.string :as str]))
 
 (defn triangle-numbers
   ([] (triangle-numbers 1))
