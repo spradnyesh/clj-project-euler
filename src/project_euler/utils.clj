@@ -63,7 +63,13 @@
       (cond (= 1 n) acc
 
             (= 0 (rem n i))
+            ;; (time (dorun (map #(prime-factors % []) (range 1 10000)))) => 88874.088615 msecs
             (prime-factors (/ n i) (conj acc i))
+            ;; (time (dorun (map #(prime-factors % []) (range 1 10000)))) => 89654.110617 msecs
+            ;; (apply prime-factors (loop [n (/ n i) acc (conj acc i)]
+            ;;                                 (if (not= 0 (rem n i))
+            ;;                                   [n acc]
+            ;;                                   (recur (/ n i) (conj acc i)))))
 
             :else (recur (next-prime i) acc)))))
 
