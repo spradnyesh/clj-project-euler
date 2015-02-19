@@ -18,6 +18,7 @@
   (if (zero? n)
     1
     (*' n (factorial (dec n)))))
+(def m-factorial (memo/ttl factorial :ttl/threshold 1000000))
 
 (defn combination [n k]
   (/ (factorial n)
