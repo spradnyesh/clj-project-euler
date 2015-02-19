@@ -7,6 +7,9 @@
 (expect false (is-pentagonal? 2))
 (expect true (is-pentagonal? 5))
 (expect false (condition 1 2))
-; (expect true (condition 1 2)) ; ???
+; (expect true (condition-1 1 2)) ; ???
 ; (expect ??? (all-combos ???)) ; ???
-; (expect ??? (main ???)) ; ???
+; (expect ??? (main-1 ???)) ; ???
+(expect false (is-pentagonal?-2 2))
+(expect true (is-pentagonal?-2 5))
+(expect [2167 1020 7042750 1560090 5482660 8602840] (main-2 3000))

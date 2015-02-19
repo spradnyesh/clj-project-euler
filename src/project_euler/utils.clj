@@ -129,3 +129,9 @@
   (reduce + (map-indexed (fn [index value]
                            (* (math/expt 10 index) value))
                          (reverse digits))))
+
+(defn quadratic-roots [a b c]
+  (let [b2-4ac (math/expt (- (* b b) (* 4 a c)) 0.5)
+        x1 (/ (+ (- b) b2-4ac) (* 2 a))
+        x2 (/ (- (- b) b2-4ac) (* 2 a))]
+    [x1 x2]))
