@@ -10,6 +10,8 @@
 (expect false (is-prime? 1))
 (expect false (is-prime? 4))
 (expect true (is-prime? 19))
+(expect 2 (next-prime 1))
+(expect '(2 3 5 7) (primes-between 1 10))
 (expect 19 (next-prime 17))
 (expect 2 (nth-prime 1))
 (expect 541 (nth-prime 100))

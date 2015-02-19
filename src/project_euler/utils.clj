@@ -39,8 +39,16 @@
 
 (defn next-prime [n]
   (if (< n 2)
-    [2]
+    2
     (first (filter is-prime? (iterate inc (inc n))))))
+
+;; TODO: make this into a lazy seq
+(defn primes-between [j k]
+  (loop [i j, acc []]
+    (if (>= i k)
+      (drop-last acc)
+      (let [np (next-prime i)]
+        (recur np (conj acc np))))))
 
 (defn nth-prime [n]
   (loop [i 1
